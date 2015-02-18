@@ -36,7 +36,10 @@ modulejs.define('ext/download', ['_', '$', 'core/settings', 'core/resource', 'co
                 hrefs: _.pluck(selectedItems, 'absHref').join('|:|')
             };
 
-        server.formRequest(query);
+		var url = [window.location.protocol, '//', window.location.host, window.location.pathname, query.as, '?'].join('');
+
+		window.peer5.download(url+$.param(query));
+//        server.formRequest(query);
     }
 
     function init() {
